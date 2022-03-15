@@ -35,10 +35,10 @@ jobs:
           npm ci
           npm run cy:verify
       - name: Download Scantist-Bom-Detect
-        run: curl -s https://scripts.scantist.com/scantist-bom-detect.jar --output scantist-bom-detect.jar
+        run: curl -s https://download.scantist.com/scantist-bom-detect.jar --output scantist-bom-detect.jar
       
       - name: Upload to Scantist 
         env: # Setting the Token
           SCANTISTTOKEN: ${{secrets.SCANTISTTOKEN }}
-          SCANTIST_IMPORT_URL : "https://api-staging.scantist.io/ci-scan/" #add this line if you are setting up on a dedicated scantist server
+          SCANTIST_IMPORT_URL : "https://scantist.io/ci-scan/" #add this line if you are setting up on a dedicated scantist server
         run: java -jar scantist-bom-detect.jar
